@@ -1,0 +1,27 @@
+syntax = "proto2";
+import "google/protobuf/struct.proto";
+
+message Info {
+    required string send_info = 1;
+}
+
+message Header {
+    required string header = 1;
+}
+
+message MapperTextChunk {
+    required string text_chunk = 1;
+}
+
+message ReducerInput {
+    message KVPairs {
+        required int32 reducer_id = 1;
+        message ListItems {
+            required string word = 1;
+            required int32 count = 2;
+        }
+        repeated ListItems key_values = 2;
+    }
+    repeated KVPairs kvs = 1;
+}
+
